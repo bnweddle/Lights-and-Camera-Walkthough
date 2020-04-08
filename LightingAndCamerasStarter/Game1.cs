@@ -12,6 +12,10 @@ namespace LightingAndCamerasStarter
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        // our crate
+        Crate crate;
+
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -39,6 +43,9 @@ namespace LightingAndCamerasStarter
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            // initialize the crate 
+            crate = new Crate(this, CrateType.Slats);
 
             // TODO: use this.Content to load your game content here
         }
@@ -76,6 +83,7 @@ namespace LightingAndCamerasStarter
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            crate.Draw();
 
             base.Draw(gameTime);
         }
