@@ -140,6 +140,7 @@ namespace LightingAndCamerasStarter
         void InitializeEffect()
         {
             effect = new BasicEffect(game.GraphicsDevice);
+            effect.EnableDefaultLighting();
             effect.World = Matrix.CreateScale(2.0f);
             effect.View = Matrix.CreateLookAt(
                 new Vector3(8, 9, 12), // The camera position
