@@ -140,7 +140,15 @@ namespace LightingAndCamerasStarter
         void InitializeEffect()
         {
             effect = new BasicEffect(game.GraphicsDevice);
-            effect.EnableDefaultLighting();
+            // Turn on lighting
+            effect.LightingEnabled = true;
+            // Set up light 0
+            effect.DirectionalLight0.Enabled = true;
+            effect.DirectionalLight0.Direction = new Vector3(1f, 0, 1f);
+            effect.DirectionalLight0.DiffuseColor = new Vector3(1f, 0, 0);
+            effect.DirectionalLight0.SpecularColor = new Vector3(1f, 0.4f, 0.4f);
+            effect.AmbientLightColor = new Vector3(0.3f, 0.3f, 0.3f);
+
             effect.World = Matrix.CreateScale(2.0f);
             effect.View = Matrix.CreateLookAt(
                 new Vector3(8, 9, 12), // The camera position
