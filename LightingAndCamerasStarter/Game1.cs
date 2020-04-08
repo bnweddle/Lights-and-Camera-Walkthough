@@ -15,7 +15,11 @@ namespace LightingAndCamerasStarter
         // our crates
         Crate[] crates;
         // The camera 
-        CirclingCamera camera;
+        // CirclingCamera camera;
+        // The game camera
+        FPSCamera camera;
+
+
 
 
         public Game1()
@@ -58,7 +62,9 @@ namespace LightingAndCamerasStarter
             };
 
             // Initialize the camera 
-            camera = new CirclingCamera(this, new Vector3(0, 5, 10), 0.5f);
+            // camera = new CirclingCamera(this, new Vector3(0, 5, 10), 0.5f);
+            // Initialize the camera 
+            camera = new FPSCamera(this, new Vector3(0, 3, 10));
 
 
             // TODO: use this.Content to load your game content here
