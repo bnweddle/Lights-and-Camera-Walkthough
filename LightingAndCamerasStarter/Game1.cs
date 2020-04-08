@@ -12,8 +12,8 @@ namespace LightingAndCamerasStarter
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        // our crate
-        Crate crate;
+        // our crates
+        Crate[] crates;
         // The camera 
         CirclingCamera camera;
 
@@ -47,7 +47,16 @@ namespace LightingAndCamerasStarter
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // initialize the crate 
-            crate = new Crate(this, CrateType.Slats);
+            // Make some crates
+            crates = new Crate[] {
+                new Crate(this, CrateType.DarkCross, Matrix.Identity),
+                new Crate(this, CrateType.Slats, Matrix.CreateTranslation(4, 0, 5)),
+                new Crate(this, CrateType.Cross, Matrix.CreateTranslation(-8, 0, 3)),
+                new Crate(this, CrateType.DarkCross, Matrix.CreateRotationY(MathHelper.PiOver4) * Matrix.CreateTranslation(1, 0, 7)),
+                new Crate(this, CrateType.Slats, Matrix.CreateTranslation(3, 0, -3)),
+                new Crate(this, CrateType.Cross, Matrix.CreateRotationY(3) * Matrix.CreateTranslation(3, 2, -3))
+            };
+
             // Initialize the camera 
             camera = new CirclingCamera(this, new Vector3(0, 5, 10), 0.5f);
 
@@ -90,7 +99,11 @@ namespace LightingAndCamerasStarter
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            crate.Draw(camera);
+            // Draw some crates
+            foreach (Crate crate in crates)
+            {
+                crate.Draw(camera);
+            }
 
             base.Draw(gameTime);
         }

@@ -43,14 +43,17 @@ namespace LightingAndCamerasStarter
         /// </summary>
         /// <param name="game">The game this crate belongs to</param>
         /// <param name="type">The type of crate to use</param>
-        public Crate(Game game, CrateType type)
+        /// <param name="world">The position and orientation of the crate in the world</param>
+        public Crate(Game game, CrateType type, Matrix world)
         {
             this.game = game;
             this.texture = game.Content.Load<Texture2D>($"crate{(int)type}_diffuse");
             InitializeVertices();
             InitializeIndices();
             InitializeEffect();
+            effect.World = world;
         }
+
 
 
         /// <summary>
