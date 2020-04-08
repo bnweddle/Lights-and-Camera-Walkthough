@@ -145,7 +145,7 @@ namespace LightingAndCamerasStarter
             // Set up light 0
             effect.DirectionalLight0.Enabled = true;
             effect.DirectionalLight0.Direction = new Vector3(1f, 0, 1f);
-            effect.DirectionalLight0.DiffuseColor = new Vector3(1f, 0, 0);
+            effect.DirectionalLight0.DiffuseColor = new Vector3(0.8f, 0, 0);
             effect.DirectionalLight0.SpecularColor = new Vector3(1f, 0.4f, 0.4f);
             effect.AmbientLightColor = new Vector3(0.3f, 0.3f, 0.3f);
 
@@ -168,8 +168,13 @@ namespace LightingAndCamerasStarter
         /// <summary>
         /// Draws the crate
         /// </summary>
-        public void Draw()
+        /// <param name="camera">The camera to use to draw the crate</param>
+        public void Draw(ICamera camera)
         {
+            // set the view and projection matrices
+            effect.View = camera.View;
+            effect.Projection = camera.Projection;
+
             // apply the effect 
             effect.CurrentTechnique.Passes[0].Apply();
 
@@ -184,7 +189,9 @@ namespace LightingAndCamerasStarter
                 0,                          // The first index to use
                 12                          // the number of triangles to draw
             );
+
         }
+
 
 
 

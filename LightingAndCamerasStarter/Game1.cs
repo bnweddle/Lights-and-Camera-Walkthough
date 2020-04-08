@@ -14,6 +14,8 @@ namespace LightingAndCamerasStarter
 
         // our crate
         Crate crate;
+        // The camera 
+        CirclingCamera camera;
 
 
         public Game1()
@@ -46,6 +48,9 @@ namespace LightingAndCamerasStarter
 
             // initialize the crate 
             crate = new Crate(this, CrateType.Slats);
+            // Initialize the camera 
+            camera = new CirclingCamera(this, new Vector3(0, 5, 10), 0.5f);
+
 
             // TODO: use this.Content to load your game content here
         }
@@ -70,6 +75,8 @@ namespace LightingAndCamerasStarter
                 Exit();
 
             // TODO: Add your update logic here
+            // Update the camera 
+            camera.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -83,7 +90,7 @@ namespace LightingAndCamerasStarter
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            crate.Draw();
+            crate.Draw(camera);
 
             base.Draw(gameTime);
         }
